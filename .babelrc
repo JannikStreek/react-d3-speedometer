@@ -1,5 +1,5 @@
 {
-  "presets": [
+  "presets":  [
     [
       "env",
       {
@@ -14,6 +14,8 @@
         "useBuiltIns": true
       }
     ],
+    "react"
+  ],
   "env": {
     "production": {
         "plugins": [
