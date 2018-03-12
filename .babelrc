@@ -10,7 +10,7 @@
         }
       }
     ],
-    "react"
+    "react-app"
   ],
   "env": {
     "production": {
