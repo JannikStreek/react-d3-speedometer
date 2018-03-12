@@ -1,12 +1,6 @@
 {
   "presets": ["react-app"],
   "env": {
-    "targets": {
-          "browsers": ["IE 11",
-          "> 1%",
-          "last 2 versions"
-          ]
-    },
     "production": {
         "plugins": [
             "transform-remove-console",
