@@ -7,11 +7,8 @@
         "targets": {
           "browsers": ["IE 11",
           "> 1%",
-          "last 2 versions"
-          ],
-          "uglify": true
-        },
-        "useBuiltIns": true
+          "last 2 versions"]
+        }
       }
     ],
     "react"
