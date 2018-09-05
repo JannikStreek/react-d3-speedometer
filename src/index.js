@@ -141,6 +141,11 @@ class ReactSpeedometer extends React.Component {
                 parentHeight: self.gaugeDiv.parentNode.clientHeight
             };
 
+            var segmentColorFn = PROPS.segmentColors && PROPS.segmentColors.length === PROPS.segments ?
+                PROPS.segmentColors : d3InterpolateHsl(
+                    d3Rgb( PROPS.startColor ),
+                    d3Rgb( PROPS.endColor )
+                )
             // START: Configurable values
             var config = {
                 // width/height config
@@ -158,10 +163,7 @@ class ReactSpeedometer extends React.Component {
                 // segments in the speedometer
                 majorTicks: PROPS.segments,
                 // color range for the segments
-                arcColorFn: d3InterpolateHsl( 
-                                d3Rgb( PROPS.startColor ), 
-                                d3Rgb( PROPS.endColor ) 
-                            ),
+                arcColorFn: segmentColorFn,
                 // needle configuration
                 needleTransition: PROPS.needleTransition,
                 needleTransitionDuration: PROPS.needleTransitionDuration,
@@ -272,7 +274,10 @@ class ReactSpeedometer extends React.Component {
                         .append('path')
                         .attr('class', 'speedo-segment')
                         .attr('fill', function(d, i) {
-                            return config.arcColorFn(d * i);
+                            if (typeof config.arcColorFn === 'function') {
+                                return config.arcColorFn(d * i);
+                            }
+                            return config.arcColorFn[i];
                         })
                         .attr('d', arc);
 
