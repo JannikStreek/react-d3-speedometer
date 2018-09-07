@@ -49,6 +49,17 @@ describe("<ReactSpeedometer />", () => {
         expect( full_dom_wrapper.find('path.speedo-segment').length ).to.equal(5);
     });
 
+    // check if the segments have the correct color
+    it('should use the given segment colors', () => {
+        const full_dom_wrapper = mount( <ReactSpeedometer
+            segments={3}
+            segmentColors={['#ff0000', '#00ff00', '#0000ff']}
+        /> ).render();
+        expect( full_dom_wrapper.find('path.speedo-segment')[0].attribs.fill ).to.equal('#ff0000');
+        expect( full_dom_wrapper.find('path.speedo-segment')[1].attribs.fill ).to.equal('#00ff00');
+        expect( full_dom_wrapper.find('path.speedo-segment')[2].attribs.fill ).to.equal('#0000ff');
+    });
+
     // check the text color of the current value is the default (#666)
     it('should have the default text color for current value', () => {
         const full_dom_wrapper = mount( <ReactSpeedometer /> ).render();
